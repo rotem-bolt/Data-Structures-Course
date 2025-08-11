@@ -1,8 +1,4 @@
-# This is a sample Python script for debugging practice.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
+from test_file import test_function
 
 def print_hi(name):
     # Use a breakpoint in the code line below to debug your script.
@@ -34,4 +30,5 @@ def debug_example():
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print_hi('Dvir`s angles')
+    test_function()
     debug_example()
