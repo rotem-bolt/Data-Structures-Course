@@ -1,5 +1,70 @@
 from AVLTree_class import AVLTree, load_users_into_tree, _Node
-from test_file import test_function
+from Messages import Message
+from MessageHashTable import MessageHashTable
+
+def load_messages():
+    """Load all messages into hash table based on the table"""
+    messages_hash = MessageHashTable()
+
+    # לכל משתמש: {message_id: (טקסט, האם הודעה קיבלה לייק לפי הטבלה בצהוב)}
+    initial_messages = {
+        7: {
+            1: {"message_text": 'היה חשמונאי', "is_liked": True},
+            11: {"message_text": 'מי לה׳-אלי', "is_liked": False},
+            18: {"message_text": 'נכה ביוונים', "is_liked": True},
+            23: {"message_text": 'נארוב לפילים', "is_liked": False},
+        },
+        8: {
+            2: {"message_text": 'צא ולמד', "is_liked": False},
+        },
+        9: {
+            3: {"message_text": 'הגע בנפשך עד היכן', "is_liked": False},
+            12: {"message_text": 'התבוא אלי?', "is_liked": False},
+            19: {"message_text": 'שומר נפשו', "is_liked": False},
+            24: {"message_text": 'תודה', "is_liked": False},
+            26: {"message_text": 'בבקשה', "is_liked": False},
+        },
+        10: {
+            4: {"message_text": 'חינם בלבד', "is_liked": True},
+        },
+        11: {
+            5: {"message_text": 'רוקדים עם כוכבים', "is_liked": False},
+            13: {"message_text": 'רוקד עם כוכבה', "is_liked": False},
+            20: {"message_text": 'לא רוקדים', "is_liked": False},
+        },
+        12: {
+            6: {"message_text": 'בשבת בלבד אליך ים', "is_liked": False},
+            14: {"message_text": 'לבריכה', "is_liked": False},
+        },
+        13: {
+            7: {"message_text": 'אני זמין החל מיום שני', "is_liked": False},
+            15: {"message_text": 'נמצא בקוטב הצפוני', "is_liked": True},
+        },
+        14: {
+            8: {"message_text": 'דובים מסביב, איזה פחד', "is_liked": True},
+        },
+        15: {
+            9: {"message_text": 'ולאד המשפד (הערפד)', "is_liked": False},
+            16: {"message_text": 'בטירת בראן', "is_liked": False},
+            21: {"message_text": 'אגדה אורבנית', "is_liked": True},
+        },
+        16: {
+            10: {"message_text": 'הודעההודעההודעה', "is_liked": False},
+            17: {"message_text": 'לאלאלאלאלא', "is_liked": False},
+            22: {"message_text": 'כןכןכןכ', "is_liked": False},
+            25: {"message_text": 'בהחלט', "is_liked": True},
+            27: {"message_text": 'אולי????', "is_liked": False},
+        }
+    }
+
+
+    # טעינה לטבלה
+    for user_id, msgs in initial_messages.items():
+        for msg_id, data in msgs.items():
+            messages_hash.add_message(user_id, Message(msg_id, data["message_text"], data["is_liked"]))
+
+    return messages_hash
+
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
@@ -32,7 +97,6 @@ if __name__ == '__main__':
         (25, "עע", "תת", "נקבה", 2000, "מיאיזהואאיזהיאאיזשיאיזהר"),
     ]
 
-    # --- יצירת העץ וטעינת המשתמשים ---
     tree = AVLTree()
     load_users_into_tree(tree, users_data)
 
@@ -43,22 +107,19 @@ if __name__ == '__main__':
     print("=== All users (sorted by ID) ===")
     for user in tree.inorder():
         user.show_profile()
+    ht = load_messages()
 
-    # --- דוגמאות חיפוש ---
-    print("\n=== Lookup examples ===")
-    for uid in (3, 15, 25, 99):
-        u = tree.search(uid)
-        if u:
-            print(f"Found {uid}: {u.first_name} {u.last_name} ({u.gender}, {u.birth_year})")
-        else:
-            print(f"User {uid} not found")
+    # הצגת כל ההודעות של משתמש 7
+    print("📌 הודעות של משתמש 7:")
+    for m in ht.get_messages(7).values():
+        m.show_message()
+    # שליפת הודעה מסוימת
+    print("\n📌 הודעה 3 של משתמש 7:")
+    msg = ht.get_message(7, 3)
+    if msg:
+        msg.show_message()
 
-    # --- קריאה אופציונלית לפונקציית בדיקה חיצונית ---
-    try:
-        # אם יש לך test_function שמקבלת את העץ / או חתימה אחרת – עדכן כאן
-        test_function()
-    except NameError:
-        # המודול לא נטען או הפונקציה לא קיימת – מתעלמים בשקט
-        pass
-    except Exception as e:
-        print(f"[test_function] raised an error: {e}")
+    # הצגת כל המשתמשים וההודעות
+    print("\n📌 כל ההודעות במערכת:")
+    ht.show_all()
+

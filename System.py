@@ -1,4 +1,3 @@
-from data_types import user_type, message_type, friends_type, likes_type
 from data_structures_starte import messages_data_structure, users_data_structure, friends_data_structure, likes_data_structure
 
 class System:

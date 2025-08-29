@@ -1,5 +1,5 @@
 from typing import Optional, Iterable
-from Users_class import User
+from Users import User
 
 class _Node:
     def __init__(self, key: int, val: User, h: int = 1, left: Optional["_Node"] = None, right: Optional["_Node"] = None):
