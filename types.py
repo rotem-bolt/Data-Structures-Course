@@ -13,13 +13,13 @@ message_type = {
         {
             "message_id": int,
             "message_text": str,
+            "is_liked": bool,
         }
     ]
 }
 
 friends_type = {
-    "user_id": int,
-    "friends": list[int]
+    int: list[int]
 }
 
 likes_type = list[int]
