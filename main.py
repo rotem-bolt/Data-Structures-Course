@@ -1,34 +1,61 @@
-from test_file import test_function
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-    return f"Greeting sent to {name}"
-
-def calculate_sum(numbers):
-    """Calculate sum of numbers - good for debugging loops"""
-    total = 0
-    for i, num in enumerate(numbers):
-        total += num
-        print(f"Adding {num}, running total: {total}")  # Good breakpoint location
-    return total
-
-def debug_example():
-    """Function to demonstrate debugging features"""
-    x = 10
-    y = 20
-    result = x + y
-    print(f"x = {x}, y = {y}, result = {result}")
-    
-    # List to iterate over
-    numbers = [1, 2, 3, 4, 5]
-    sum_result = calculate_sum(numbers)
-    print(f"Sum of {numbers} is {sum_result}")
-    
-    return result
-
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('Dvir`s angles')
-    test_function()
-    debug_example()
+    # --- הנתונים ---
+    users_data = [
+        (1, "אא", "אא", "זכר", 2000, "אאאאאאאאאאאאאאאאאאאאאאאאא"),
+        (2, "אא", "בב", "זכר", 2001, "אאאבבבאאאאבבבבאאאאאבבבבבבא"),
+        (3, "אב", "גג", "זכר", 2002, "גגגגגגגגגגגגגגגגגגגגגגגגגגגגגגגגגגגגג"),
+        (4, "אג", "דד", "זכר", 2003, "דדדדדדדדדדדדדדדדדדדדדדדדדדדדדד"),
+        (5, "בא", "הה", "זכר", 2004, "ההההההההההההההה"),
+        (6, "בב", "וו", "זכר", 2005, "הזהזהזהזהזהההזהזהזהזזזזזזזז"),
+        (7, "בב", "זז", "זכר", 2006, "חיחיחיחיחיחיחיחיחחחחחללללללללל"),
+        (8, "בג", "חח", "זכר", 2007, "בגבגבגבגבגבגבגבגבגבגבגבגבגבגבגבג"),
+        (9, "גג", "טט", "נקבה", 2000, "גטגטטגטגטגטטטטטטגגגגגגגגג"),
+        (10, "גד", "יי", "נקבה", 2001, "גדייגדייגדייגדייגדייגדייגדיייגדיי"),
+        (11, "דד", "ככ", "נקבה", 2002, "בבדדבבדדבבדדבבג'יגיבורההההה"),
+        (12, "יי", "לל", "נקבה", 2003, "ללליללהיאללההלאהללללללללללל"),
+        (13, "ככ", "ממ", "נקבה", 2004, "כבודויקרמלא הארץ"),
+        (14, "כא", "ננ", "נקבה", 2005, "יושביחושך וצלמוותאומרים בטקס כפרות בערביוםכיפור"),
+        (15, "כב", "אא", "נקבה", 2006, "שנהטובהומאושרתשנתשלום ללאמלחמה"),
+        (16, "כג", "בב", "נקבה", 2007, "בובקאטקאטקאטקתי"),
+        (17, "לל", "גג", "זכר", 2000, "לוגלוגלוגלוגלוגלוגלוגלוגלוגלוגלוגלוג"),
+        (18, "למ", "סס", "זכר", 2001, "איןלחסוםשורבדישו"),
+        (19, "ממ", "עע", "זכר", 2002, "פשוטנבלהבשוקואלתצטרךלנדבה"),
+        (20, "מנ", "פפ", "זכר", 2003, "פיקוחנפשדוחהשבתוחג"),
+        (21, "ננ", "צצ", "זכר", 2004, "לךאלהנמלהעצלראהדרכיהוחכם"),
+        (22, "נס", "קק", "נקבה", 2005, "השפןהקטןשכחלסגורהדלתבצטנןהמסכןוקיבלנזלת"),
+        (23, "סס", "רר", "נקבה", 2006, "ביוסגרירללאחמהבימשתוממתהנשמה"),
+        (24, "סע", "שש", "נקבה", 2007, "אםמיזהמהאומהזהמי"),
+        (25, "עע", "תת", "נקבה", 2000, "מיאיזהואאיזהיאאיזשיאיזהר"),
+    ]
+
+    # --- יצירת העץ וטעינת המשתמשים ---
+    tree = AVLTree()
+    load_users_into_tree(tree, users_data)
+
+    # --- מידע כללי ---
+    print(f"Total users in tree: {len(tree)}\n")
+
+    # --- הדפסה ממוינת לפי ת\"ז (Inorder) ---
+    print("=== All users (sorted by ID) ===")
+    for user in tree.inorder():
+        user.show_profile()
+
+    # --- דוגמאות חיפוש ---
+    print("\n=== Lookup examples ===")
+    for uid in (3, 15, 25, 99):
+        u = tree.search(uid)
+        if u:
+            print(f"Found {uid}: {u.first_name} {u.last_name} ({u.gender}, {u.birth_year})")
+        else:
+            print(f"User {uid} not found")
+
+    # --- קריאה אופציונלית לפונקציית בדיקה חיצונית ---
+    try:
+        # אם יש לך test_function שמקבלת את העץ / או חתימה אחרת – עדכן כאן
+        test_function(tree)
+    except NameError:
+        # המודול לא נטען או הפונקציה לא קיימת – מתעלמים בשקט
+        pass
+    except Exception as e:
+        print(f"[test_function] raised an error: {e}")
