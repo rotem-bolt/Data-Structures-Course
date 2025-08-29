@@ -1,4 +1,4 @@
-class User(System):
+class User:
     def __init__(self, user_id: int, first_name: str, last_name: str,
                  gender: str, birth_year: int, description: str):
         self.id = user_id
@@ -8,8 +8,12 @@ class User(System):
         self.birth_year = birth_year
         self.description = description
 
+    def show_id(self):
+        """Show user ID"""
+        print(f"User ID: {self.id}")
+    
     def show_profile(self):
-        # using parent class function
+        """Display complete user profile"""
         self.show_id()
         print(f"Full name: {self.first_name} {self.last_name}")
         print(f"Gender: {self.gender}")

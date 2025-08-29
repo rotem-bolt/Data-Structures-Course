@@ -1,3 +1,6 @@
+from AVLTree_class import AVLTree, load_users_into_tree, _Node
+from test_file import test_function
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     # --- הנתונים ---
@@ -53,7 +56,7 @@ if __name__ == '__main__':
     # --- קריאה אופציונלית לפונקציית בדיקה חיצונית ---
     try:
         # אם יש לך test_function שמקבלת את העץ / או חתימה אחרת – עדכן כאן
-        test_function(tree)
+        test_function()
     except NameError:
         # המודול לא נטען או הפונקציה לא קיימת – מתעלמים בשקט
         pass

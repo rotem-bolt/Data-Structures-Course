@@ -1,3 +1,7 @@
+from dataclasses import dataclass
+from typing import Optional, Iterable
+from Users_class import User
+
 @dataclass
 class _Node:
     key: int
@@ -82,3 +86,17 @@ class AVLTree:
 
     def inorder(self) -> Iterable[User]:
         return _inorder(self._root)
+
+
+def load_users_into_tree(tree: AVLTree, users_data: list[tuple]) -> None:
+    """
+    Load user data from list of tuples into AVL tree
+    Each tuple should be: (user_id, first_name, last_name, gender, birth_year, description)
+    """
+    for user_tuple in users_data:
+        if len(user_tuple) == 6:
+            user_id, first_name, last_name, gender, birth_year, description = user_tuple
+            user = User(user_id, first_name, last_name, gender, birth_year, description)
+            tree.insert(user_id, user)
+        else:
+            print(f"Warning: Invalid user data tuple: {user_tuple}")

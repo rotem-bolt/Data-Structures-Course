@@ -1,4 +1,4 @@
-from types import user_type, message_type, friends_type, likes_type
+from data_types import user_type, message_type, friends_type, likes_type
 
 
 users_data_structure: list[user_type] = [
