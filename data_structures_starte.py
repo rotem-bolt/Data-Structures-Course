@@ -68,7 +68,7 @@ users_data_structure: list[user_type] = [
     }
 ]
 
-messages_data_structure: list[message_type] = {
+messages_data_structure: dict[message_type] = {
     7: {
             1: {
                 "message_text": 'היה חשמונאי',
