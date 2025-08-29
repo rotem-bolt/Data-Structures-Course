@@ -1,7 +1,4 @@
-from data_types import user_type, message_type, friends_type, likes_type
-
-
-users_data_structure: list[user_type] = [
+users_data_structure = [
     {
     "first_name": 'אא',
     "last_name": 'אא',
@@ -68,7 +65,7 @@ users_data_structure: list[user_type] = [
     }
 ]
 
-messages_data_structure: dict[message_type] = {
+messages_data_structure = {
     7: {
             1: {
                 "message_text": 'היה חשמונאי',
@@ -117,7 +114,7 @@ messages_data_structure: dict[message_type] = {
         },
 }
 
-friends_data_structure: list[friends_type] =  {
+friends_data_structure =  {
     1: [2,4,6,8,10,21,23,25],
     2: [1,3,4,7,9,11,13,15],
     3: [1,2,4,25,24],
@@ -145,4 +142,4 @@ friends_data_structure: list[friends_type] =  {
     25: [24]
 }
 
-likes_data_structure: likes_type = [1,4,8,15,18,21,25]
+likes_data_structure = [1,4,8,15,18,21,25]
