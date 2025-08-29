@@ -1,6 +1,7 @@
 from AVLTree_class import AVLTree, load_users_into_tree, _Node
 from Messages import Message
 from MessageHashTable import MessageHashTable
+from FriendsHashTable import FriendsHashTable
 
 def load_messages():
     """Load all messages into hash table based on the table"""
@@ -65,6 +66,40 @@ def load_messages():
 
     return messages_hash
 
+def load_friends() -> FriendsHashTable:
+    friends_data = {
+        1: [2,4,6,8,10,21,23,25],
+        2: [1,3,4,7,9,11,13,15],
+        3: [1,2,4,25,24],
+        4: [25,22,13,11,9,8,6],
+        5: [6,9,17,18,19,24],
+        6: [4,5,7,11,12,15,17,20],
+        7: [25],
+        8: [1,7],
+        9: [22,25,17,16,19,5],
+        10: [],
+        11: [],
+        12: [13,14,25],
+        13: [24,4,6,19],
+        14: [18,17,16,15,6],
+        15: [3,13,23],
+        16: [7,17,25],
+        17: [18,20],
+        18: [2,5,9,11],
+        19: [],
+        20: [21,11,1,14],
+        21: [],
+        22: [20,19,17,9,7,5],
+        23: [6,16,8,18,21,11],
+        24: [12,14,16,18,20],
+        25: [24],
+    }
+
+    ht = FriendsHashTable()
+    for user_id, friends in friends_data.items():
+        for f in friends:
+            ht.add_friend(user_id, f)
+    return ht
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
@@ -123,3 +158,10 @@ if __name__ == '__main__':
     print("\n📌 כל ההודעות במערכת:")
     ht.show_all()
 
+    friends_ht = load_friends()
+
+    print("📌 כל החברים של משתמש 1:")
+    print(friends_ht.get_friends(1))
+
+    print("\n📌 כל מאגר החברים:")
+    friends_ht.show_all()
