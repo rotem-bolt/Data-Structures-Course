@@ -3,7 +3,7 @@ from typing import Dict, List
 class FriendsHashTable:
     """Hash table: user_id -> list of friends ids"""
 
-    def init(self):
+    def __init__(self):
         self.table: Dict[int, List[int]] = {}
 
     def add_friend(self, user_id: int, friend_id: int):
