@@ -76,31 +76,3 @@ def set_message_like(messages_hash: MessageHashTable, user_id: int, message_id: 
     
     message.is_liked = like_status
     return True
-
-def test_add_like():
-    """Test function for add_like"""
-    from data_structures_starter import users_data, messages_data, load_users, load_messages
-    
-    # Create test data structures
-    tree = AVLTree()
-    load_users(tree, users_data)
-    
-    messages_hash = MessageHashTable()
-    load_messages(messages_hash, messages_data)
-    
-    print("Testing add_like function...")
-    
-    # Test toggling like for user 7, message 1
-    message = messages_hash.get_message(7, 1)
-    if message:
-        original_status = message.get_is_liked()
-        print(f"Message 1 for user 7 - Original like status: {original_status}")
-        
-        # Toggle like
-        success = toggle_message_like(messages_hash, 7, 1)
-        if success:
-            new_status = message.get_is_liked()
-            print(f"After toggle - New like status: {new_status}")
-
-if __name__ == "__main__":
-    test_add_like()

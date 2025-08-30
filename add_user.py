@@ -36,22 +36,3 @@ def add_user(tree: AVLTree) -> None:
         print("Error: Please enter valid numbers for user ID and birth year")
     except Exception as e:
         print(f"Error adding user: {e}")
-
-def test_add_user():
-    """Test function for add_user"""
-    from data_structures_starter import users_data, load_users
-    
-    # Create test tree with some existing users
-    tree = AVLTree()
-    load_users(tree, users_data[:5])  # Load first 5 users
-    
-    print("Current users in tree:")
-    tree.show_all_users()
-    
-    # Test adding a user
-    print("\nTesting add_user function...")
-    # Simulate user input (in real usage, user would type these)
-    # add_user(tree)  # Commented out to avoid input prompt in test
-
-if __name__ == "__main__":
-    test_add_user()

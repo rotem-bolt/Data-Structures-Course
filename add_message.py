@@ -2,7 +2,7 @@ from MessageHashTable import MessageHashTable
 from Message import Message
 from AVLTree import AVLTree
 
-def add_message(messages_hash: MessageHashTable, tree: AVLTree) -> None:
+def add_message(messages_hash: MessageHashTable, tree: AVLTree, msg_counter: int) -> int:
     """
     Add a new message for a user
     Asks for user ID, message ID, and message text
@@ -16,15 +16,16 @@ def add_message(messages_hash: MessageHashTable, tree: AVLTree) -> None:
         user = tree.search(user_id)
         if user is None:
             print(f"Error: User {user_id} does not exist in the system")
-            return
-        
-        message_id = int(input("Enter message ID: "))
+            return msg_counter  # Return original counter on error
+
+        msg_counter += 1
+        message_id = msg_counter
         
         # Check if message ID already exists for this user
         existing_message = messages_hash.get_message(user_id, message_id)
         if existing_message is not None:
             print(f"Error: Message ID {message_id} already exists for user {user_id}")
-            return
+            return msg_counter  # Return original counter on error
         
         message_text = input("Enter message text: ")
         
@@ -44,24 +45,11 @@ def add_message(messages_hash: MessageHashTable, tree: AVLTree) -> None:
         print(f"Text: {message_text}")
         print(f"Liked: {is_liked}")
         
+        return msg_counter  # Return updated counter on success
+        
     except ValueError:
         print("Error: Please enter valid numbers for user ID and message ID")
+        return msg_counter  # Return original counter on error
     except Exception as e:
         print(f"Error adding message: {e}")
-
-def test_add_message():
-    """Test function for add_message"""
-    from data_structures_starter import users_data, messages_data, load_users, load_messages
-    
-    # Create test data structures
-    tree = AVLTree()
-    load_users(tree, users_data[:15])  # Load first 15 users
-    
-    messages_hash = MessageHashTable()
-    load_messages(messages_hash, messages_data)
-    
-    print("Current messages:")
-    messages_hash.show_all()
-
-if __name__ == "__main__":
-    test_add_message()
+        return msg_counter  # Return original counter on error
