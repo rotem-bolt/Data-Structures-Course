@@ -10,15 +10,16 @@ def add_friend(friends_hash: FriendsHashTable, tree: AVLTree) -> None:
     
     try:
         user_id = int(input("Enter user ID: "))
-        friend_id = int(input("Enter friend ID: "))
         
-        # Check if both users exist in the system
         user = tree.search(user_id)
-        friend = tree.search(friend_id)
-        
+
         if user is None:
             print(f"Error: User {user_id} does not exist in the system")
             return
+
+        friend_id = int(input("Enter friend ID: "))
+
+        friend = tree.search(friend_id)
             
         if friend is None:
             print(f"Error: User {friend_id} does not exist in the system")

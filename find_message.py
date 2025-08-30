@@ -3,8 +3,8 @@ from AVLTree import AVLTree
 
 def find_message(messages_hash: MessageHashTable, tree: AVLTree) -> None:
     """
-    Find and display messages for a user
-    Can find all messages for a user or a specific message
+    Find and display a specific message for a user
+    Asks for user ID and message ID, then shows the message
     """
     print("\n=== Find Message ===")
     
@@ -19,57 +19,19 @@ def find_message(messages_hash: MessageHashTable, tree: AVLTree) -> None:
         
         print(f"User: {user.first_name} {user.last_name} (ID: {user_id})")
         
-        # Ask what type of search
-        choice = input("Find (a)ll messages or (s)pecific message? (a/s): ").lower().strip()
+        # Find specific message
+        message_id = int(input("Enter message ID: "))
         
-        if choice == 'a' or choice == 'all':
-            # Find all messages for user
-            user_messages = messages_hash.get_messages(user_id)
-            
-            if not user_messages:
-                print(f"No messages found for user {user_id}")
-                return
-            
-            print(f"Found {len(user_messages)} messages for {user.first_name}:")
-            print("-" * 50)
-            
-            for msg_id, message in user_messages.items():
-                print(f"Message ID {msg_id}:")
-                print(f"  Text: {message.get_message_text()}")
-                print(f"  Liked: {message.get_is_liked()}")
-                print()
-                
-        elif choice == 's' or choice == 'specific':
-            # Find specific message
-            message_id = int(input("Enter message ID: "))
-            
-            message = messages_hash.get_message(user_id, message_id)
-            
-            if message is None:
-                print(f"Message ID {message_id} not found for user {user_id}")
-                return
-            
-            print(f"Found message:")
-            message.show_message()
-            
-        else:
-            print("Invalid choice. Please enter 'a' for all or 's' for specific")
+        message = messages_hash.get_message(user_id, message_id)
+        
+        if message is None:
+            print(f"Message ID {message_id} not found for user {user_id}")
+            return
+        
+        print(f"Found message:")
+        message.show_message()
             
     except ValueError:
-        print("Error: Please enter valid numbers for IDs")
+        print("Error: Please enter valid numbers for user ID and message ID")
     except Exception as e:
         print(f"Error finding message: {e}")
-
-def get_user_messages(messages_hash: MessageHashTable, user_id: int) -> dict:
-    """
-    Helper function to get all messages for a user
-    Returns dictionary of message_id -> Message objects
-    """
-    return messages_hash.get_messages(user_id)
-
-def get_specific_message(messages_hash: MessageHashTable, user_id: int, message_id: int):
-    """
-    Helper function to get a specific message
-    Returns Message object or None
-    """
-    return messages_hash.get_message(user_id, message_id)
