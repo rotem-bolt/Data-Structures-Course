@@ -31,27 +31,4 @@ def find_user_by_id(tree: AVLTree, user_id: int) -> User:
     Used by other functions that need to find users
     """
     return tree.search(user_id)
-
-def test_find_user():
-    """Test function for find_user"""
-    from data_structures_starter import users_data, load_users
     
-    # Create test tree
-    tree = AVLTree()
-    load_users(tree, users_data[:10])  # Load first 10 users
-    
-    print("Testing find_user function...")
-    print(f"Tree contains {len(tree)} users")
-    
-    # Test finding existing user
-    user = find_user_by_id(tree, 5)
-    if user:
-        print(f"Found user 5: {user.first_name} {user.last_name}")
-    
-    # Test finding non-existing user
-    user = find_user_by_id(tree, 99)
-    if user is None:
-        print("User 99 not found (as expected)")
-
-if __name__ == "__main__":
-    test_find_user()

@@ -47,27 +47,3 @@ def get_friends_list(friends_hash: FriendsHashTable, user_id: int) -> list:
     Returns list of friend IDs
     """
     return friends_hash.get_friends(user_id)
-
-def test_find_friend():
-    """Test function for find_friend"""
-    from data_structures_starter import users_data, friends_data, load_users, load_friends
-    
-    # Create test data structures
-    tree = AVLTree()
-    load_users(tree, users_data)
-    
-    friends_hash = FriendsHashTable()
-    load_friends(friends_hash, friends_data)
-    
-    print("Testing find_friend function...")
-    
-    # Test finding friends of user 1
-    friends = get_friends_list(friends_hash, 1)
-    print(f"User 1 has friends: {friends}")
-    
-    # Test user with no friends (user 10)
-    friends = get_friends_list(friends_hash, 10)
-    print(f"User 10 has friends: {friends}")
-
-if __name__ == "__main__":
-    test_find_friend()

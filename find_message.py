@@ -73,28 +73,3 @@ def get_specific_message(messages_hash: MessageHashTable, user_id: int, message_
     Returns Message object or None
     """
     return messages_hash.get_message(user_id, message_id)
-
-def test_find_message():
-    """Test function for find_message"""
-    from data_structures_starter import users_data, messages_data, load_users, load_messages
-    
-    # Create test data structures
-    tree = AVLTree()
-    load_users(tree, users_data)
-    
-    messages_hash = MessageHashTable()
-    load_messages(messages_hash, messages_data)
-    
-    print("Testing find_message function...")
-    
-    # Test finding all messages for user 7
-    messages = get_user_messages(messages_hash, 7)
-    print(f"User 7 has {len(messages)} messages")
-    
-    # Test finding specific message
-    message = get_specific_message(messages_hash, 7, 1)
-    if message:
-        print(f"Found message 1 for user 7: {message.get_message_text()}")
-
-if __name__ == "__main__":
-    test_find_message()

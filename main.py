@@ -17,14 +17,16 @@ if __name__ == '__main__':
     Tree = AVLTree()
     load_users(Tree, users_data)
 
+    msg_counter = 0
     MessagesHash = MessageHashTable()
-    load_messages(MessagesHash, messages_data)
+    MessagesHash, msg_counter = load_messages(MessagesHash, messages_data, msg_counter)
 
     FriendsHash = FriendsHashTable()
     load_friends(FriendsHash, friends_data)
 
     print("=== Social Media System ===")
     print("Data loaded successfully!")
+    print(f"Message counter after loading: {msg_counter}")
 
     # Example function calls (commented out to avoid user input during testing)
     
@@ -41,7 +43,7 @@ if __name__ == '__main__':
     find_friend(FriendsHash, Tree)
 
     #5 function of the system - Add message
-    add_message(MessagesHash, Tree)
+    msg_counter = add_message(MessagesHash, Tree, msg_counter)
 
     #6 function of the system - Find message
     find_message(MessagesHash, Tree)

@@ -125,12 +125,13 @@ def load_users(tree: AVLTree, users_data: list[tuple]) -> None:
         else:
             print(f"Warning: Invalid user data tuple: {user_tuple}")
 
-def load_messages(messages_hash: MessageHashTable, messages_data: dict):
+def load_messages(messages_hash: MessageHashTable, messages_data: dict, msg_counter: int):
     for user_id, msgs in messages_data.items():
         for msg_id, data in msgs.items():
             messages_hash.add_message(user_id, Message(msg_id, data["message_text"], data["is_liked"]))
+            msg_counter += 1
 
-    return messages_hash
+    return messages_hash, msg_counter
 
 def load_friends(friends_hash: FriendsHashTable, friends_data: dict):
     for user_id, friends in friends_data.items():
