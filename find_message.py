@@ -14,7 +14,7 @@ def find_message(messages_hash: MessageHashTable, tree: AVLTree) -> None:
         # Check if user exists
         user = tree.search(user_id)
         if user is None:
-            print(f"❌ Error: User {user_id} does not exist in the system")
+            print(f"Error: User {user_id} does not exist in the system")
             return
         
         print(f"User: {user.first_name} {user.last_name} (ID: {user_id})")
@@ -27,10 +27,10 @@ def find_message(messages_hash: MessageHashTable, tree: AVLTree) -> None:
             user_messages = messages_hash.get_messages(user_id)
             
             if not user_messages:
-                print(f"❌ No messages found for user {user_id}")
+                print(f"No messages found for user {user_id}")
                 return
             
-            print(f"✅ Found {len(user_messages)} messages for {user.first_name}:")
+            print(f"Found {len(user_messages)} messages for {user.first_name}:")
             print("-" * 50)
             
             for msg_id, message in user_messages.items():
@@ -46,19 +46,19 @@ def find_message(messages_hash: MessageHashTable, tree: AVLTree) -> None:
             message = messages_hash.get_message(user_id, message_id)
             
             if message is None:
-                print(f"❌ Message ID {message_id} not found for user {user_id}")
+                print(f"Message ID {message_id} not found for user {user_id}")
                 return
             
-            print(f"✅ Found message:")
+            print(f"Found message:")
             message.show_message()
             
         else:
-            print("❌ Invalid choice. Please enter 'a' for all or 's' for specific")
+            print("Invalid choice. Please enter 'a' for all or 's' for specific")
             
     except ValueError:
-        print("❌ Error: Please enter valid numbers for IDs")
+        print("Error: Please enter valid numbers for IDs")
     except Exception as e:
-        print(f"❌ Error finding message: {e}")
+        print(f"Error finding message: {e}")
 
 def get_user_messages(messages_hash: MessageHashTable, user_id: int) -> dict:
     """

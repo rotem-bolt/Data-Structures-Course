@@ -15,7 +15,7 @@ def add_message(messages_hash: MessageHashTable, tree: AVLTree) -> None:
         # Check if user exists in the system
         user = tree.search(user_id)
         if user is None:
-            print(f"❌ Error: User {user_id} does not exist in the system")
+            print(f"Error: User {user_id} does not exist in the system")
             return
         
         message_id = int(input("Enter message ID: "))
@@ -23,7 +23,7 @@ def add_message(messages_hash: MessageHashTable, tree: AVLTree) -> None:
         # Check if message ID already exists for this user
         existing_message = messages_hash.get_message(user_id, message_id)
         if existing_message is not None:
-            print(f"❌ Error: Message ID {message_id} already exists for user {user_id}")
+            print(f"Error: Message ID {message_id} already exists for user {user_id}")
             return
         
         message_text = input("Enter message text: ")
@@ -38,16 +38,16 @@ def add_message(messages_hash: MessageHashTable, tree: AVLTree) -> None:
         # Add message to hash table
         messages_hash.add_message(user_id, new_message)
         
-        print(f"✅ Message added successfully!")
+        print(f"Message added successfully!")
         print(f"User: {user.first_name} {user.last_name} (ID: {user_id})")
         print(f"Message ID: {message_id}")
         print(f"Text: {message_text}")
         print(f"Liked: {is_liked}")
         
     except ValueError:
-        print("❌ Error: Please enter valid numbers for user ID and message ID")
+        print("Error: Please enter valid numbers for user ID and message ID")
     except Exception as e:
-        print(f"❌ Error adding message: {e}")
+        print(f"Error adding message: {e}")
 
 def test_add_message():
     """Test function for add_message"""

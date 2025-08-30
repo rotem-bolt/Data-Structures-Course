@@ -29,13 +29,13 @@ def add_user(tree: AVLTree) -> None:
         # Add user to tree
         tree.insert(user_id, new_user)
         
-        print(f"✅ User {user_id} ({first_name} {last_name}) added successfully!")
+        print(f"User {user_id} ({first_name} {last_name}) added successfully!")
         print(f"Total users in system: {len(tree)}")
         
     except ValueError:
-        print("❌ Error: Please enter valid numbers for user ID and birth year")
+        print("Error: Please enter valid numbers for user ID and birth year")
     except Exception as e:
-        print(f"❌ Error adding user: {e}")
+        print(f"Error adding user: {e}")
 
 def test_add_user():
     """Test function for add_user"""

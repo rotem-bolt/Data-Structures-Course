@@ -14,7 +14,7 @@ def find_friend(friends_hash: FriendsHashTable, tree: AVLTree) -> None:
         # Check if user exists
         user = tree.search(user_id)
         if user is None:
-            print(f"❌ Error: User {user_id} does not exist in the system")
+            print(f"Error: User {user_id} does not exist in the system")
             return
         
         # Get friends list
@@ -24,7 +24,7 @@ def find_friend(friends_hash: FriendsHashTable, tree: AVLTree) -> None:
             print(f"User {user.first_name} {user.last_name} (ID: {user_id}) has no friends")
             return
         
-        print(f"✅ Friends of {user.first_name} {user.last_name} (ID: {user_id}):")
+        print(f"Friends of {user.first_name} {user.last_name} (ID: {user_id}):")
         print("-" * 50)
         
         for friend_id in friends_ids:
@@ -37,9 +37,9 @@ def find_friend(friends_hash: FriendsHashTable, tree: AVLTree) -> None:
         print(f"\nTotal friends: {len(friends_ids)}")
         
     except ValueError:
-        print("❌ Error: Please enter a valid number for user ID")
+        print("Error: Please enter a valid number for user ID")
     except Exception as e:
-        print(f"❌ Error finding friends: {e}")
+        print(f"Error finding friends: {e}")
 
 def get_friends_list(friends_hash: FriendsHashTable, user_id: int) -> list:
     """

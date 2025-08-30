@@ -15,15 +15,15 @@ def find_user(tree: AVLTree) -> None:
         user = tree.search(user_id)
         
         if user is not None:
-            print(f"✅ User found!")
+            print(f"User found!")
             user.show_profile()
         else:
-            print(f"❌ User with ID {user_id} not found")
+            print(f"User with ID {user_id} not found")
             
     except ValueError:
-        print("❌ Error: Please enter a valid number for user ID")
+        print("Error: Please enter a valid number for user ID")
     except Exception as e:
-        print(f"❌ Error searching for user: {e}")
+        print(f"Error searching for user: {e}")
 
 def find_user_by_id(tree: AVLTree, user_id: int) -> User:
     """

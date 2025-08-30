@@ -29,23 +29,23 @@ if __name__ == '__main__':
     # Example function calls (commented out to avoid user input during testing)
     
     #1 function - Add new user
-    # add_user(Tree)
+    add_user(Tree)
 
     #2 function of the system - Find user
-    # find_user(Tree)
+    find_user(Tree)
 
     #3 function of the system - Add friend
-    # add_friend(FriendsHash, Tree)
+    add_friend(FriendsHash, Tree)
 
     #4 function of the system - Find friends
-    # find_friend(FriendsHash, Tree)
+    find_friend(FriendsHash, Tree)
 
     #5 function of the system - Add message
-    # add_message(MessagesHash, Tree)
+    add_message(MessagesHash, Tree)
 
     #6 function of the system - Find message
-    # find_message(MessagesHash, Tree)
+    find_message(MessagesHash, Tree)
 
     #7 function of the system - Add/remove like
-    # add_like(MessagesHash, Tree)
+    add_like(MessagesHash, Tree)
     
