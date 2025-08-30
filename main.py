@@ -1,4 +1,4 @@
-from AVLTree_class import AVLTree, load_users_into_tree, _Node
+from AVLTree_class import AVLTree, load_users_into_tree
 from Messages import Message
 from MessageHashTable import MessageHashTable
 from FriendsHashTable import FriendsHashTable
