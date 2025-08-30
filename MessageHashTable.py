@@ -1,5 +1,5 @@
 from typing import Dict
-from Messages import Message
+from Message import Message
 
 class MessageHashTable:
     """Hash table: user_id -> hash table of messages"""
