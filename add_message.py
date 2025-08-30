@@ -2,7 +2,7 @@ from MessageHashTable import MessageHashTable
 from Message import Message
 from AVLTree import AVLTree
 
-def add_message(messages_hash: MessageHashTable, tree: AVLTree, msg_counter: int) -> int:
+def add_message(messages_hash: MessageHashTable, tree: AVLTree, msg_counter: int, likes_data: list[int]) -> int:
     """
     Add a new message for a user
     Asks for user ID, message ID, and message text
@@ -32,6 +32,9 @@ def add_message(messages_hash: MessageHashTable, tree: AVLTree, msg_counter: int
         # Ask about like status
         like_choice = input("Is this message liked? (y/n): ").lower().strip()
         is_liked = like_choice == 'y' or like_choice == 'yes'
+
+        if is_liked:
+            likes_data.append(message_id)
         
         # Create new message
         new_message = Message(message_id, message_text, is_liked)
@@ -45,11 +48,11 @@ def add_message(messages_hash: MessageHashTable, tree: AVLTree, msg_counter: int
         print(f"Text: {message_text}")
         print(f"Liked: {is_liked}")
         
-        return msg_counter  # Return updated counter on success
+        return msg_counter , likes_data  # Return updated counter on success
         
     except ValueError:
         print("Error: Please enter valid numbers for user ID and message ID")
-        return msg_counter  # Return original counter on error
+        return msg_counter , likes_data  # Return original counter on error
     except Exception as e:
         print(f"Error adding message: {e}")
-        return msg_counter  # Return original counter on error
+        return msg_counter , likes_data  # Return original counter on error

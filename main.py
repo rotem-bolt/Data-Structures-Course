@@ -27,6 +27,7 @@ if __name__ == '__main__':
     print("=== Social Media System ===")
     print("Data loaded successfully!")
     print(f"Message counter after loading: {msg_counter}")
+    print(f"Initial likes data: {likes_data}")
 
     # Example function calls (commented out to avoid user input during testing)
     
@@ -43,11 +44,11 @@ if __name__ == '__main__':
     find_friend(FriendsHash, Tree)
 
     #5 function of the system - Add message
-    msg_counter = add_message(MessagesHash, Tree, msg_counter)
+    msg_counter, likes_data = add_message(MessagesHash, Tree, msg_counter, likes_data)
 
     #6 function of the system - Find message
     find_message(MessagesHash, Tree)
 
-    #7 function of the system - Add/remove like
-    add_like(MessagesHash, Tree)
+    #7 function of the system - Add like
+    likes_data = add_like(MessagesHash, Tree, likes_data)
     
