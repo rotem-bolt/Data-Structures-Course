@@ -4,7 +4,6 @@ from User import User
 class AVLTree:
     """
     AVL Tree - A self-balancing binary search tree
-    Uses dictionaries to store nodes (similar to MessageHashTable)
     """
     
     def __init__(self):
@@ -14,10 +13,10 @@ class AVLTree:
         self.next_node_id = 1  # Counter to give each node a unique ID number
         self._n = 0  # Total number of users in the tree
 
-    def __len__(self) -> int: 
+    def __len__(self): 
         return self._n
 
-    def _create_node(self, key: int, val: User, height: int = 1, left_id: Optional[int] = None, right_id: Optional[int] = None) -> int:
+    def _create_node(self, key: int, val: User, height: int = 1, left_id: Optional[int] = None, right_id: Optional[int] = None):
         """Create a new node and return its ID"""
         node_id = self.next_node_id
         self.next_node_id += 1
@@ -30,25 +29,25 @@ class AVLTree:
         }
         return node_id
 
-    def _get_height(self, node_id: Optional[int]) -> int:
+    def _get_height(self, node_id: Optional[int]):
         """Get height of node by ID"""
         return self.nodes[node_id]['height'] if node_id else 0
 
-    def _get_balance_factor(self, node_id: Optional[int]) -> int:
+    def _get_balance_factor(self, node_id: Optional[int]):
         """Calculate balance factor for node"""
         if not node_id:
             return 0
         node = self.nodes[node_id]
         return self._get_height(node['left_id']) - self._get_height(node['right_id'])
 
-    def _fix_height(self, node_id: int) -> None:
+    def _fix_height(self, node_id: int):
         """Fix height for node"""
         node = self.nodes[node_id]
         left_height = self._get_height(node['left_id'])
         right_height = self._get_height(node['right_id'])
         node['height'] = max(left_height, right_height) + 1
 
-    def _rotate_right(self, node_id: int) -> int:
+    def _rotate_right(self, node_id: int):
         """Right rotation - returns new root ID"""
         node = self.nodes[node_id]
         left_id = node['left_id']
@@ -64,7 +63,7 @@ class AVLTree:
         
         return left_id
 
-    def _rotate_left(self, node_id: int) -> int:
+    def _rotate_left(self, node_id: int):
         """Left rotation - returns new root ID"""
         node = self.nodes[node_id]
         right_id = node['right_id']
@@ -80,7 +79,7 @@ class AVLTree:
         
         return right_id
 
-    def _rebalance(self, node_id: int) -> int:
+    def _rebalance(self, node_id: int):
         """Rebalance node and return new root ID"""
         self._fix_height(node_id)
         balance = self._get_balance_factor(node_id)
@@ -100,7 +99,7 @@ class AVLTree:
         
         return node_id
 
-    def _insert_node(self, node_id: Optional[int], key: int, val: User) -> int:
+    def _insert_node(self, node_id: Optional[int], key: int, val: User):
         """Insert into subtree rooted at node_id, return new root ID"""
         if not node_id:
             return self._create_node(key, val)
@@ -117,14 +116,14 @@ class AVLTree:
         
         return self._rebalance(node_id)
 
-    def insert(self, key: int, val: User) -> None:
+    def insert(self, key: int, val: User):
         """Insert key-value pair into the AVL tree"""
         existed = self.search(key) is not None
         self.root_id = self._insert_node(self.root_id, key, val)
         if not existed:
             self._n += 1
 
-    def search(self, key: int) -> Optional[User]:
+    def search(self, key: int):
         """Search for key in the AVL tree"""
         node_id = self.root_id
         while node_id:
@@ -137,7 +136,7 @@ class AVLTree:
                 return node['val']
         return None
 
-    def _inorder_traversal(self, node_id: Optional[int], result_list: list) -> None:
+    def _inorder_traversal(self, node_id: Optional[int], result_list: list):
         """In-order traversal starting from node_id - adds users to result_list"""
         if node_id:  # If node exists
             node = self.nodes[node_id]
@@ -148,14 +147,14 @@ class AVLTree:
             # Step 3: Visit right subtree last
             self._inorder_traversal(node['right_id'], result_list)
 
-    def inorder(self) -> list[User]:
+    def inorder(self):
         """Return all users in sorted order (by ID) as a list"""
         result = []  # Create empty list to store users
         self._inorder_traversal(self.root_id, result)  # Fill the list
         return result  # Return completed list
     
-    def show_all_users(self) -> None:
-        """Print all users in sorted order (by ID) - similar to MessageHashTable"""
+    def show_all_users(self):
+        """Print all users in sorted order (by ID)"""
         print(f"\nAVL Tree contains {len(self)} users:")
         print("-" * 40)
         users_list = self.inorder()  # Get all users as a list

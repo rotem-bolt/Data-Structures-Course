@@ -29,26 +29,41 @@ if __name__ == '__main__':
     print(f"Message counter after loading: {msg_counter}")
     print(f"Initial likes data: {likes_data}")
 
-    # Example function calls (commented out to avoid user input during testing)
-    
-    #1 function - Add new user
-    add_user(Tree)
-
-    #2 function of the system - Find user
-    find_user(Tree)
-
-    #3 function of the system - Add friend
-    add_friend(FriendsHash, Tree)
-
-    #4 function of the system - Find friends
-    find_friend(FriendsHash, Tree)
-
-    #5 function of the system - Add message
-    msg_counter, likes_data = add_message(MessagesHash, Tree, msg_counter, likes_data)
-
-    #6 function of the system - Find message
-    find_message(MessagesHash, Tree)
-
-    #7 function of the system - Add like
-    likes_data = add_like(MessagesHash, Tree, likes_data)
+    # Menu system with do-while loop
+    while True:
+        print("\n" + "="*50)
+        print("           SOCIAL MEDIA SYSTEM MENU")
+        print("="*50)
+        print("1. Add new user")
+        print("2. Find user")
+        print("3. Add friend")
+        print("4. Find friends")
+        print("5. Add message")
+        print("6. Find message")
+        print("7. Add like")
+        print("E. Exit")
+        print("="*50)
+        
+        choice = input("Enter your choice: ").strip()
+        
+        if choice == '1':
+            add_user(Tree)
+        elif choice == '2':
+            find_user(Tree)
+        elif choice == '3':
+            add_friend(FriendsHash, Tree)
+        elif choice == '4':
+            find_friend(FriendsHash, Tree)
+        elif choice == '5':
+            msg_counter, likes_data = add_message(MessagesHash, Tree, msg_counter, likes_data)
+        elif choice == '6':
+            find_message(MessagesHash, Tree)
+        elif choice == '7':
+            likes_data = add_like(MessagesHash, Tree, likes_data)
+        elif choice.lower() == 'e':
+            print("\nThank you for using Social Media System!")
+            print("Goodbye! 👋")
+            break
+        else:
+            print("Invalid choice! Please enter 1-7 or E to exit.")
     
