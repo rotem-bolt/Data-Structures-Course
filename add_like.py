@@ -1,7 +1,7 @@
 from MessageHashTable import MessageHashTable
 from AVLTree import AVLTree
 
-def add_like(messages_hash: MessageHashTable, tree: AVLTree, likes_data: list[int]) -> list[int]:
+def add_like(messages_hash: MessageHashTable, tree: AVLTree, likes_data: list[int]):
     """
     Add a like to a message
     Asks for user ID and message ID, then likes the message
