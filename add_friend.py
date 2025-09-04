@@ -1,7 +1,7 @@
 from FriendsHashTable import FriendsHashTable
 from AVLTree import AVLTree
 
-def add_friend(friends_hash: FriendsHashTable, tree: AVLTree) -> None:
+def add_friend(friends_hash: FriendsHashTable, tree: AVLTree):
     """
     Add a friendship between two users
     Asks for user IDs and creates friendship in both directions

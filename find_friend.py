@@ -1,7 +1,7 @@
 from FriendsHashTable import FriendsHashTable
 from AVLTree import AVLTree
 
-def find_friend(friends_hash: FriendsHashTable, tree: AVLTree) -> None:
+def find_friend(friends_hash: FriendsHashTable, tree: AVLTree):
     """
     Find and display all friends of a user
     Asks for user ID and shows list of friends with their details

@@ -5,31 +5,31 @@ from FriendsHashTable import FriendsHashTable
 from MessageHashTable import MessageHashTable
 
 users_data = [
-        (1, "אא", "אא", "זכר", 2000, "אאאאאאאאאאאאאאאאאאאאאאאאא"),
-        (2, "אא", "בב", "זכר", 2001, "אאאבבבאאאאבבבבאאאאאבבבבבבא"),
-        (3, "אב", "גג", "זכר", 2002, "גגגגגגגגגגגגגגגגגגגגגגגגגגגגגגגגגגגגג"),
-        (4, "אג", "דד", "זכר", 2003, "דדדדדדדדדדדדדדדדדדדדדדדדדדדדדד"),
-        (5, "בא", "הה", "זכר", 2004, "ההההההההההההההה"),
-        (6, "בב", "וו", "זכר", 2005, "הזהזהזהזהזהההזהזהזהזזזזזזזז"),
-        (7, "בב", "זז", "זכר", 2006, "חיחיחיחיחיחיחיחיחחחחחללללללללל"),
-        (8, "בג", "חח", "זכר", 2007, "בגבגבגבגבגבגבגבגבגבגבגבגבגבגבגבג"),
-        (9, "גג", "טט", "נקבה", 2000, "גטגטטגטגטגטטטטטטגגגגגגגגג"),
-        (10, "גד", "יי", "נקבה", 2001, "גדייגדייגדייגדייגדייגדייגדיייגדיי"),
-        (11, "דד", "ככ", "נקבה", 2002, "בבדדבבדדבבדדבבג'יגיבורההההה"),
-        (12, "יי", "לל", "נקבה", 2003, "ללליללהיאללההלאהללללללללללל"),
-        (13, "ככ", "ממ", "נקבה", 2004, "כבודויקרמלא הארץ"),
-        (14, "כא", "ננ", "נקבה", 2005, "יושביחושך וצלמוותאומרים בטקס כפרות בערביוםכיפור"),
-        (15, "כב", "אא", "נקבה", 2006, "שנהטובהומאושרתשנתשלום ללאמלחמה"),
-        (16, "כג", "בב", "נקבה", 2007, "בובקאטקאטקאטקתי"),
-        (17, "לל", "גג", "זכר", 2000, "לוגלוגלוגלוגלוגלוגלוגלוגלוגלוגלוגלוג"),
-        (18, "למ", "סס", "זכר", 2001, "איןלחסוםשורבדישו"),
-        (19, "ממ", "עע", "זכר", 2002, "פשוטנבלהבשוקואלתצטרךלנדבה"),
-        (20, "מנ", "פפ", "זכר", 2003, "פיקוחנפשדוחהשבתוחג"),
-        (21, "ננ", "צצ", "זכר", 2004, "לךאלהנמלהעצלראהדרכיהוחכם"),
-        (22, "נס", "קק", "נקבה", 2005, "השפןהקטןשכחלסגורהדלתבצטנןהמסכןוקיבלנזלת"),
-        (23, "סס", "רר", "נקבה", 2006, "ביוסגרירללאחמהבימשתוממתהנשמה"),
-        (24, "סע", "שש", "נקבה", 2007, "אםמיזהמהאומהזהמי"),
-        (25, "עע", "תת", "נקבה", 2000, "מיאיזהואאיזהיאאיזשיאיזהר"),
+        (1, "Alon", "Avraham", "male", 2000, "alonavraham@gmail.com"),
+        (2, "Bar", "Bib", "male", 2001, "barbib@gmail.com"),
+        (3, "Cici", "Cohen", "female", 2002, "cicic@gmail.com"),
+        (4, "David", "Danon", "male", 2003, "daviddanon@gmail.com"),
+        (5, "Eran", "Boim", "male", 2005, "eranboim@gmail.com"),
+        (6, "Faran", "Keren", "female", 2006, "farankeren@gmail.com"),
+        (7, "Gabi", "Gonen", "male", 2002, "gabigonen@gmail.com"),
+        (8, "Hen", "Hacohen", "male", 2007, "henhacohen@gmail.com"),
+        (9, "Ilan", "Nachum", "male", 2000, "ilannachum@gmail.com"),
+        (10, "Jakob", "Levi", "male", 2005, "jakoblevi@gmail.com"),
+        (11, "Kobi", "Levi", "male", 2006, "kobillevi@gmail.com"),
+        (12, "Lilach", "Levi", "male", 2007, "liorlevi@gmail.com"),
+        (13, "Lib", "Levi", "male", 2000, "liblevi@gmail.com"),
+        (14, "Lior", "Shalom", "male", 2001, "gilsalom@gmail.com"),
+        (15, "Meni", "Ben Hamo", "female", 2002, "menibenhamo@gmail.com"),
+        (16, "Noa", "Levi", "female", 2003, "noalevi@gmail.com"),
+        (17, "Oren", "Or", "male", 2004, "orenor@gmail.com"),
+        (18, "Or", "Levi", "male", 2001, "orlevi@gmail.com"),
+        (19, "Pini", "Levi", "male", 2002, "pinilevi@gmail.com"),
+        (20, "Pnina", "Levi", "male", 2003, "pninlevi@gmail.com"),
+        (21, "Qalanit", "Calanit", "female", 2004, "qalanitcalanit@gmail.com"),
+        (22, "Rina", "Levi", "female", 2005, "rinalevi@gmail.com"),
+        (23, "Roni", "Levi", "male", 2006, "ronilevi@gmail.com"),
+        (24, "Rona", "Levi", "female", 2007, "ronalevi@gmail.com"),
+        (25, "Sharon", "Levi", "female", 2000, "sharonlevi@gmail.com"),
 ]
 
 friends_data = {
@@ -62,65 +62,63 @@ friends_data = {
 
 messages_data = {
         7: {
-            1: {"message_text": 'היה חשמונאי', "is_liked": True},
-            11: {"message_text": 'מי לה׳-אלי', "is_liked": False},
-            18: {"message_text": 'נכה ביוונים', "is_liked": True},
-            23: {"message_text": 'נארוב לפילים', "is_liked": False},
+            1: {"message_text": 'text1', "likes": [1]},
+            11: {"message_text": 'text11', "likes": [11]},
+            18: {"message_text": 'text18', "likes": [18,16]},
+            23: {"message_text": 'text23', "likes": [23]},
         },
         8: {
-            2: {"message_text": 'צא ולמד', "is_liked": False},
+            2: {"message_text": 'text2', "likes": [2]},
         },
         9: {
-            3: {"message_text": 'הגע בנפשך עד היכן', "is_liked": False},
-            12: {"message_text": 'התבוא אלי?', "is_liked": False},
-            19: {"message_text": 'שומר נפשו', "is_liked": False},
-            24: {"message_text": 'תודה', "is_liked": False},
-            26: {"message_text": 'בבקשה', "is_liked": False},
+            3: {"message_text": 'text3', "likes": [3]},
+            12: {"message_text": 'text12', "likes": [12]},
+            19: {"message_text": 'text19', "likes": [19,14]},
+            24: {"message_text": 'text24', "likes": [24]},
+            26: {"message_text": 'text26', "likes": [22]},
         },
         10: {
-            4: {"message_text": 'חינם בלבד', "is_liked": True},
+            4: {"message_text": 'text4', "likes": [4]},
         },
         11: {
-            5: {"message_text": 'רוקדים עם כוכבים', "is_liked": False},
-            13: {"message_text": 'רוקד עם כוכבה', "is_liked": False},
-            20: {"message_text": 'לא רוקדים', "is_liked": False},
+            5: {"message_text": 'text5', "likes": [5]},
+            13: {"message_text": 'text13', "likes": [13]},
+            20: {"message_text": 'text20', "likes": [20,15]},
         },
         12: {
-            6: {"message_text": 'בשבת בלבד אליך ים', "is_liked": False},
-            14: {"message_text": 'לבריכה', "is_liked": False},
+            6: {"message_text": 'text6', "likes": [6]},
+            14: {"message_text": 'text14', "likes": [14]},
         },
         13: {
-            7: {"message_text": 'אני זמין החל מיום שני', "is_liked": False},
-            15: {"message_text": 'נמצא בקוטב הצפוני', "is_liked": True},
+            7: {"message_text": 'text7', "likes": [7]},
+            15: {"message_text": 'text15', "likes": [15]},
         },
         14: {
-            8: {"message_text": 'דובים מסביב, איזה פחד', "is_liked": True},
+            8: {"message_text": 'text8', "likes": [8]},
         },
         15: {
-            9: {"message_text": 'ולאד המשפד (הערפד)', "is_liked": False},
-            16: {"message_text": 'בטירת בראן', "is_liked": False},
-            21: {"message_text": 'אגדה אורבנית', "is_liked": True},
+            9: {"message_text": 'text9', "likes": [9]},
+            16: {"message_text": 'text16', "likes": [16,10]},
+            21: {"message_text": 'text21', "likes": [21,12]},
         },
         16: {
-            10: {"message_text": 'הודעההודעההודעה', "is_liked": False},
-            17: {"message_text": 'לאלאלאלאלא', "is_liked": False},
-            22: {"message_text": 'כןכןכןכ', "is_liked": False},
-            25: {"message_text": 'בהחלט', "is_liked": True},
-            27: {"message_text": 'אולי????', "is_liked": False},
+            10: {"message_text": 'text10', "likes": [10]},
+            17: {"message_text": 'text17', "likes": [17,11]},
+            22: {"message_text": 'text22', "likes": [22]},
+            25: {"message_text": 'text25', "likes": [25,13]},
+            27: {"message_text": 'text27', "likes": [22]},
         }
 }
-
-likes_data = [1,4,8,15,18,21,25]
 
 def load_users(tree: AVLTree, users_data: list[tuple]) -> None:
     """
     Load user data from list of tuples into AVL tree
-    Each tuple should be: (user_id, first_name, last_name, gender, birth_year, description)
+    Each tuple should be: (user_id, first_name, last_name, gender, birth_year, email)
     """
     for user_tuple in users_data:
         if len(user_tuple) == 6:
-            user_id, first_name, last_name, gender, birth_year, description = user_tuple
-            user = User(user_id, first_name, last_name, gender, birth_year, description)
+            user_id, first_name, last_name, gender, birth_year, email = user_tuple
+            user = User(user_id, first_name, last_name, gender, birth_year, email)
             tree.insert(user_id, user)
         else:
             print(f"Warning: Invalid user data tuple: {user_tuple}")
@@ -128,7 +126,7 @@ def load_users(tree: AVLTree, users_data: list[tuple]) -> None:
 def load_messages(messages_hash: MessageHashTable, messages_data: dict, msg_counter: int):
     for user_id, msgs in messages_data.items():
         for msg_id, data in msgs.items():
-            messages_hash.add_message(user_id, Message(msg_id, data["message_text"], data["is_liked"]))
+            messages_hash.add_message(user_id, Message(msg_id, data["message_text"], data["likes"]))
             msg_counter += 1
 
     return messages_hash, msg_counter
