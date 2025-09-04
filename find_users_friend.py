@@ -27,26 +27,26 @@ def find_users_friend(friends_hash: FriendsHashTable, tree: AVLTree) -> None:
             return
         
         print(f"\n{user.first_name}'s Friends:")
-        friends_list = []
+        friends_list = {}
         for friend_id in friends_ids:
             friend = tree.search(friend_id)
             if friend:
-                friends_list.append((friend_id, friend))
-                print(f"{i}. {friend.first_name} {friend.last_name}")
+                friends_list[friend_id] = friend
+                print(f"{friend_id}. {friend.first_name} {friend.last_name}")
             else:
-                print(f"{i}. ID {friend_id} (User not found)")
+                print(f"ID {friend_id} - User not found")
         
         if not friends_list:
             print("No valid friends found")
             return
         
         # Step 3: Ask which friend to see details for
-        print(f"\nEnter the number (1-{len(friends_list)}) of the friend whose details you want to see:")
+        print(f"\nEnter the id of the friend whose details you want to see:")
         choice = int(input("Choice: "))
         
-        if 1 <= choice <= len(friends_list):
-            selected_friend_id, selected_friend = friends_list[choice - 1]
-            
+        selected_friend = friends_list[choice]
+        
+        if selected_friend:
             # Step 4: Show selected friend's details
             print(f"\n=== Friend Details ===")
             selected_friend.show_profile()
