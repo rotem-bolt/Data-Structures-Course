@@ -1,7 +1,6 @@
 from AVLTree import AVLTree
-from User import User
 
-def update_user(tree: AVLTree) -> None:
+def update_user(tree: AVLTree):
     """
     Update user information in the AVL tree
     Asks for user ID and allows updating user fields
@@ -34,13 +33,6 @@ def update_user(tree: AVLTree) -> None:
             print("Update cancelled")
             return
         
-        # Store original values for confirmation
-        original_first = user.first_name
-        original_last = user.last_name
-        original_gender = user.gender
-        original_birth = user.birth_year
-        original_email = user.email
-        
         # Update based on choice
         if choice == '1':
             new_first_name = input(f"Enter new first name (current: {user.first_name}): ").strip()
@@ -63,6 +55,7 @@ def update_user(tree: AVLTree) -> None:
                 user.birth_year = new_birth_year
             except ValueError:
                 print("Invalid birth year entered, keeping original value")
+                return
                 
         elif choice == '5':
             new_email = input(f"Enter new email (current: {user.email}): ").strip()
@@ -76,27 +69,6 @@ def update_user(tree: AVLTree) -> None:
         # Show updated information
         print(f"\nUpdated user information:")
         user.show_profile()
-        
-        # Show what changed
-        changes_made = []
-        if user.first_name != original_first:
-            changes_made.append(f"First name: {original_first} → {user.first_name}")
-        if user.last_name != original_last:
-            changes_made.append(f"Last name: {original_last} → {user.last_name}")
-        if user.gender != original_gender:
-            changes_made.append(f"Gender: {original_gender} → {user.gender}")
-        if user.birth_year != original_birth:
-            changes_made.append(f"Birth year: {original_birth} → {user.birth_year}")
-        if user.email != original_email:
-            changes_made.append(f"Email: {original_email} → {user.email}")
-        
-        if changes_made:
-            print("Changes made:")
-            for change in changes_made:
-                print(f"  • {change}")
-            print("User updated successfully!")
-        else:
-            print("No changes were made")
         
     except ValueError:
         print("Error: Please enter valid numbers for user ID and birth year")

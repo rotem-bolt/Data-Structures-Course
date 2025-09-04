@@ -2,7 +2,7 @@ from MessageHashTable import MessageHashTable
 from Message import Message
 from AVLTree import AVLTree
 
-def add_message(messages_hash: MessageHashTable, tree: AVLTree, msg_counter: int) -> int:
+def add_message(messages_hash: MessageHashTable, tree: AVLTree, msg_counter: int):
     """
     Add a new message for a user
     Asks for user ID, message ID, and message text

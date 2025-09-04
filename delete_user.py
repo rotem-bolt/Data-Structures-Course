@@ -1,7 +1,7 @@
 from AVLTree import AVLTree
 from FriendsHashTable import FriendsHashTable
 
-def delete_user(tree: AVLTree, friends_hash: FriendsHashTable) -> None:
+def delete_user(tree: AVLTree, friends_hash: FriendsHashTable):
     """
     Delete a user from the system
     Removes user from AVL tree and also removes them from all friends lists
@@ -22,7 +22,7 @@ def delete_user(tree: AVLTree, friends_hash: FriendsHashTable) -> None:
         user.show_profile()
         
         confirm = input("Are you sure you want to delete this user? (yes/no): ").lower().strip()
-        if confirm not in ['yes', 'y']:
+        if confirm not in ['yes', 'y', 'Yes', 'Y', 'Yes', 'YES']:
             print("User deletion cancelled")
             return
         
@@ -39,13 +39,13 @@ def delete_user(tree: AVLTree, friends_hash: FriendsHashTable) -> None:
         if user_id in friends_hash.table:
             del friends_hash.table[user_id]
         
-        # TODO: Remove user from AVL tree (this would require implementing delete in AVLTree)
-        # For now, we'll just mark it as deleted or show a message
-        print(f"User {user.first_name} {user.last_name} (ID: {user_id}) has been removed from friends lists")
-        print("Note: User removal from AVL tree requires additional implementation")
+        # Remove user from AVL tree
+        if tree.delete(user_id):
+            print(f"User {user.first_name} {user.last_name} (ID: {user_id}) has been successfully deleted from the system")
+        else:
+            print(f"Error: Could not remove user {user_id} from AVL tree")
         
         print(f"Removed user from {len(user_friends)} friend lists")
-        print("User deletion completed successfully!")
         
     except ValueError:
         print("Error: Please enter a valid number for user ID")

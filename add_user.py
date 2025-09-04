@@ -1,7 +1,7 @@
 from AVLTree import AVLTree
 from User import User
 
-def add_user(tree: AVLTree) -> None:
+def add_user(tree: AVLTree):
     """
     Add a new user to the AVL tree
     Asks for user input and creates a new User object

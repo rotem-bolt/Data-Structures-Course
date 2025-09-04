@@ -1,7 +1,7 @@
 from FriendsHashTable import FriendsHashTable
 from AVLTree import AVLTree
 
-def find_users_friend(friends_hash: FriendsHashTable, tree: AVLTree) -> None:
+def find_users_friend(friends_hash: FriendsHashTable, tree: AVLTree):
     """
     Find a user's friends, show their names, then allow viewing details of a selected friend
     """
