@@ -21,10 +21,10 @@ def add_user(tree: AVLTree) -> None:
         last_name = input("Enter last name: ")
         gender = input("Enter gender: ")
         birth_year = int(input("Enter birth year: "))
-        description = input("Enter description: ")
+        email = input("Enter email: ")
         
         # Create new user object
-        new_user = User(user_id, first_name, last_name, gender, birth_year, description)
+        new_user = User(user_id, first_name, last_name, gender, birth_year, email)
         
         # Add user to tree
         tree.insert(user_id, new_user)
