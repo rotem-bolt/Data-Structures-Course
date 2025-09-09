@@ -2,7 +2,7 @@ from MessageHashTable import MessageHashTable
 from Message import Message
 from AVLTree import AVLTree
 
-def add_message(messages_hash: MessageHashTable, tree: AVLTree, msg_counter: int, likes_data: list[int]) -> int:
+def add_message(messages_hash: MessageHashTable, tree: AVLTree, msg_counter: int):
     """
     Add a new message for a user
     Asks for user ID, message ID, and message text
@@ -21,23 +21,15 @@ def add_message(messages_hash: MessageHashTable, tree: AVLTree, msg_counter: int
         msg_counter += 1
         message_id = msg_counter
         
-        # Check if message ID already exists for this user
-        existing_message = messages_hash.get_message(user_id, message_id)
-        if existing_message is not None:
-            print(f"Error: Message ID {message_id} already exists for user {user_id}")
-            return msg_counter  # Return original counter on error
-        
         message_text = input("Enter message text: ")
         
         # Ask about like status
-        like_choice = input("Is this message liked? (y/n): ").lower().strip()
-        is_liked = like_choice == 'y' or like_choice == 'yes'
-
-        if is_liked:
-            likes_data.append(message_id)
+        likes_input = input("Who likes this message? Enter users with comma: ").lower().strip()
+        likes = likes_input.split(',')
+        likes = [int(like) for like in likes]
         
         # Create new message
-        new_message = Message(message_id, message_text, is_liked)
+        new_message = Message(message_id, message_text, likes)
         
         # Add message to hash table
         messages_hash.add_message(user_id, new_message)
@@ -46,13 +38,13 @@ def add_message(messages_hash: MessageHashTable, tree: AVLTree, msg_counter: int
         print(f"User: {user.first_name} {user.last_name} (ID: {user_id})")
         print(f"Message ID: {message_id}")
         print(f"Text: {message_text}")
-        print(f"Liked: {is_liked}")
+        print(f"Likes: {likes}")
         
-        return msg_counter , likes_data  # Return updated counter on success
+        return msg_counter  # Return updated counter on success
         
     except ValueError:
         print("Error: Please enter valid numbers for user ID and message ID")
-        return msg_counter , likes_data  # Return original counter on error
+        return msg_counter  # Return original counter on error
     except Exception as e:
         print(f"Error adding message: {e}")
-        return msg_counter , likes_data  # Return original counter on error
+        return msg_counter  # Return original counter on error

@@ -160,3 +160,58 @@ class AVLTree:
         users_list = self.inorder()  # Get all users as a list
         for user in users_list:
             user.show_profile()  # Use the User's show_profile method
+
+    def _find_min_node(self, node_id: int):
+        """Find the minimum node in subtree rooted at node_id"""
+        while self.nodes[node_id]['left_id'] is not None:
+            node_id = self.nodes[node_id]['left_id']
+        return node_id
+
+    def _delete_node(self, node_id: Optional[int], key: int):
+        """Delete node with given key from subtree rooted at node_id, return new root ID"""
+        if not node_id:
+            return None
+        
+        node = self.nodes[node_id]
+        
+        # Standard BST deletion
+        if key < node['key']:
+            node['left_id'] = self._delete_node(node['left_id'], key)
+        elif key > node['key']:
+            node['right_id'] = self._delete_node(node['right_id'], key)
+        else:
+            # Node to be deleted found
+            # Case 1: Node with only right child or no child
+            if node['left_id'] is None:
+                right_id = node['right_id']
+                del self.nodes[node_id]  # Remove node from dictionary
+                return right_id
+            
+            # Case 2: Node with only left child
+            elif node['right_id'] is None:
+                left_id = node['left_id']
+                del self.nodes[node_id]  # Remove node from dictionary
+                return left_id
+            
+            # Case 3: Node with two children
+            # Get the inorder successor (smallest in the right subtree)
+            successor_id = self._find_min_node(node['right_id'])
+            successor_node = self.nodes[successor_id]
+            
+            # Copy the successor's key and value to this node
+            node['key'] = successor_node['key']
+            node['val'] = successor_node['val']
+            
+            # Delete the successor
+            node['right_id'] = self._delete_node(node['right_id'], successor_node['key'])
+        
+        # Rebalance the tree
+        return self._rebalance(node_id)
+
+    def delete(self, key: int):
+        """Delete key from the AVL tree"""
+        if self.search(key) is not None:
+            self.root_id = self._delete_node(self.root_id, key)
+            self._n -= 1
+            return True
+        return False

@@ -1,7 +1,7 @@
 from AVLTree import AVLTree
 from User import User
 
-def find_user(tree: AVLTree) -> None:
+def find_user(tree: AVLTree):
     """
     Find and display a user from the AVL tree
     Asks for user ID and shows user profile if found

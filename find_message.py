@@ -1,7 +1,7 @@
 from MessageHashTable import MessageHashTable
 from AVLTree import AVLTree
 
-def find_message(messages_hash: MessageHashTable, tree: AVLTree) -> None:
+def find_message(messages_hash: MessageHashTable, tree: AVLTree):
     """
     Find and display a specific message for a user
     Asks for user ID and message ID, then shows the message
